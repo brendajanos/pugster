@@ -1,0 +1,12 @@
+{
+  "name": "pugster",
+  "version": "0.1.0",
+  "main": "index.js",
+  "repository": "https://github.com/brendajanos/pugster.git",
+  "author": "brendajanos <73362325+brendajanos@users.noreply.github.com>",
+  "license": "MIT",
+  "private": true,
+  "workspaces":[
+    "packages/**"
+  ]
+}

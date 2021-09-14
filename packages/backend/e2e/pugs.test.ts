@@ -31,7 +31,7 @@ describe("Pug routes", () => {
   });
 
   test("GET /pugs", (done) => {
-    const pug : IPug = {
+    const pug: IPug = {
       name: "Pedro",
       age: 3,
       sex: "male",
@@ -41,16 +41,15 @@ describe("Pug routes", () => {
       },
     };
 
-    const returnPug: IPug&{_id:string} = {
+    const returnPug: IPug & { _id: string } = {
       _id: "613f2545cd5c49955e2a31c7",
-      ...pug
+      ...pug,
+    };
 
-    }
-
-    const dbPug : IPug&{_id:ObjectId} = {
+    const dbPug: IPug & { _id: ObjectId } = {
       _id: ObjectId.createFromHexString("613f2545cd5c49955e2a31c7"),
-      ...pug
-    }
+      ...pug,
+    };
     const db = client.db("pugster");
     const pugs = db.collection<IPug>("pugs");
     pugs.insertOne(dbPug).then(() => {

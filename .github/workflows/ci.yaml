@@ -1,0 +1,27 @@
+name: continous integraton
+
+on:
+  push: 
+    branches: 
+     - main
+  worflow_dispatch: 
+
+jobs:
+  check: 
+    name: ci_check
+    runs-on: ubuntu-latest
+    steps: 
+     - uses: actions/checkout@v2
+     - uses: actions/setup-node@v2
+       with: 
+         node-version: 14
+         cache: yarn
+     - name: installing dependecies
+       working-directory: ./packages/backend
+       run: yarn
+     - name: lint the code
+       working-directory: ./packages/backend
+       run: yarn lint
+     - name: run e2e tests
+       working-directory: ./packages/backend
+       run: yarn test:e2e

@@ -13,6 +13,7 @@
     "test:e2e": "jest ./e2e"
   },
   "devDependencies": {
+    "@shelf/jest-mongodb": "^2.0.3",
     "@types/express": "^4.17.13",
     "@types/jest": "^27.0.1",
     "@types/supertest": "^2.0.11",

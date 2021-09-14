@@ -3,46 +3,49 @@ import * as pugService from "../services/pugs.service";
 import * as validationService from "../services/validation.service";
 
 const pugSchema = {
-  type : "object",
+  type: "object",
   properties: {
     name: {
-      type: "string"
+      type: "string",
     },
     age: {
-      type: "number"
+      type: "number",
+      minimum: 0,
+      maximum: 30,
     },
     sex: {
       type: "string",
-      enum: ["female", "male"]
+      enum: ["female", "male"],
     },
     location: {
-      type :"object",
-      properties:{
-        lon:{
-          type:"number"
+      type: "object",
+      properties: {
+        lon: {
+          type: "number",
         },
-        lat:{
-          type:"number"
-        }
+        lat: {
+          type: "number",
+        },
       },
-      additionalProperties: false
-    }
+      additionalProperties: false,
+    },
   },
-  additionalProperties: false
+  additionalProperties: false,
+};
 
-}
-
-function getAllPugs(req: Request, res: Response): void {
-  res.json([]);
+async function getAllPugs(req: Request, res: Response): Promise<void> {
+  const pugs = await pugService.getAllPugs();
+  res.json(pugs);
 }
 
 async function createPug(req: Request, res: Response): Promise<void> {
-  const isvalid = validationService.validate(pugSchema,req.body)
-  if(!isvalid){
-    res.json({ok:false}).status(400);
+  const isvalid = validationService.validate(pugSchema, req.body);
+  if (!isvalid) {
+    res.status(400).json({ ok: false });
+    return;
   }
   await pugService.createPug(req.body);
-  res.json({ ok: true }).status(201);
+  res.status(201).json({ ok: true });
 }
 
 export { getAllPugs, createPug };

@@ -1,0 +1,32 @@
+name: continous integraton
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: building a docker image
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: crazy-max/ghaction-docker-meta@v1
+        id: docker_meta
+        with:
+          images: ghcr.io/${{ github.repository_owner }}/pugster
+          tag-sha: true
+      - uses: docker/setup-buildx-action@v1
+      - uses: docker/login-action@v1
+        with:
+          registry: ghcr.io
+          username: ${{ github.repository_owner }}
+          password: ${{ secrets.GH_PA }}
+      - uses: docker/build-push-action@v2
+        with:
+          context: .
+          file: ./packages/backend/Dockerfile
+          push: true
+          tags: ${{ steps.docker_meta.outputs.tags }}
+          labels: |
+            ${{ steps.docker_meta.outputs.labels }}
+            org.opencontainers.image.title=pugster
+            org.opencontainers.image.description=the backend service for pugster

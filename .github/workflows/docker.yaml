@@ -1,4 +1,4 @@
-name: continous integraton
+name: building a docker image
 
 on:
   workflow_dispatch:

@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  name: pugster-backend
+  namespace: default
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: pugster-backend
+  template: 
+    metadata:
+      labels: 
+        app: pugster-backend
+    spec:
+      containers:
+      - name: pugster-backend
+        image: ghcr.io/brendajanos/pugster:sha-b54a91d
+        ports: 
+          - containerPort: 8080 

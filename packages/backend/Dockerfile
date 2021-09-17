@@ -12,4 +12,5 @@ COPY --from=builder /usr/src/yarn.lock ./yarn.lock
 COPY --from=builder /usr/src/build ./build
 RUN yarn install --frozen-lockfile
 
+EXPOSE 8080
 ENTRYPOINT [ "yarn","start" ]

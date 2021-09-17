@@ -1,0 +1,6 @@
+auth:
+  rootUser: root
+  rootPassword: admin
+  database: pugster
+  username: pugster
+  password: pugster

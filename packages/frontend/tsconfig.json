@@ -1,0 +1,13 @@
+{
+    "compilerOptions": {
+        "outDir": "build",
+        "esModuleInterop": true,
+        "strict": true,
+        "jsx":"react-native",
+        "resolveJsonModule": true,
+        "skipLibCheck": false
+    },
+    "include": [
+        "src/**/*"
+    ]
+}

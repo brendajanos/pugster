@@ -15,16 +15,7 @@ spec:
     spec:
       containers:
         - name: pugster-backend
-          image: ghcr.io/brendajanos/pugster:sha-f238380
+          image: ghcr.io/brendajanos/pugster:sha-f68ff6d
           ports:
             - name: http
               containerPort: 8080
-              protocol: TCP
-          livenessProbe:
-            httpGet:
-              path: /
-              port: http
-          readinessProbe:
-            httpGet:
-              path: /
-              port: http

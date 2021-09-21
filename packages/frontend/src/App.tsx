@@ -7,12 +7,18 @@
  */
 
 import React from 'react';
-import {SafeAreaView, Text} from 'react-native';
+import {SafeAreaView} from 'react-native';
+import Map from './Map.web';
 
 const App = () => {
   return (
     <SafeAreaView>
-      <Text>HeloBelo{process.env.MAPBOX_TOKEN}</Text>
+      <Map
+        initialLng={19.040528307070645}
+        initialLat={47.50637626996388}
+        initialZoom={15}
+        onLocationChange={(lng, lat, zoom) => {}}
+      />
     </SafeAreaView>
   );
 };

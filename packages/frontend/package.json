@@ -15,7 +15,8 @@
     "react": "17.0.2",
     "react-dom": "^17.0.2",
     "react-native": "0.65.1",
-    "react-native-web": "^0.17.1"
+    "react-native-web": "^0.17.1",
+    "react-query": "^3.24.3"
   },
   "devDependencies": {
     "@babel/core": "^7.15.5",

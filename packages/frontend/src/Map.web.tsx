@@ -37,7 +37,7 @@ const Map: FC<IProps> = props => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  return <div ref={mapContainer} style={{height: 400}} />;
+  return <div ref={mapContainer} style={{flex: 1}} />;
 };
 
 export default Map;

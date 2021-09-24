@@ -28,11 +28,40 @@ const Map: FC<IProps> = props => {
       center: [lng, lat],
       zoom: zoom,
     });
+    map.current.on('load', () => {
+      map.current.addLayer({
+        id: 'locations',
+        type: 'circle',
+        /* Add a GeoJSON source containing place coordinates and information. */
+        source: {
+          type: 'geojson',
+          data: {
+            type: 'FeatureCollection',
+            features: [
+              {
+                type: 'Feature',
+                geometry: {
+                  type: 'Point',
+                  coordinates: [19.040528307070645, 47.50637626996388],
+                },
+                properties: {
+                  name: 'Luigi',
+                  imageSrc: 'something',
+                },
+              },
+            ],
+          },
+        },
+      });
+    });
     map.current.on('move', () => {
-      setLng(map.current.getCenter().lng.toFixed(4));
-      setLat(map.current.getCenter().lat.toFixed(4));
-      setZoom(map.current.getZoom().toFixed(2));
-      onLocationChange(lng, lat, zoom);
+      let lngCurrent = map.current.getCenter().lng.toFixed(4);
+      let latCurrent = map.current.getCenter().lat.toFixed(4);
+      let zoomCurrent = map.current.getZoom().toFixed(2);
+      setLng(lngCurrent);
+      setLat(latCurrent);
+      setZoom(zoomCurrent);
+      onLocationChange(lngCurrent, latCurrent, zoomCurrent);
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

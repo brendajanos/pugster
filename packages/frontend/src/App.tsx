@@ -8,9 +8,16 @@
 
 import React from 'react';
 import HomeScreen from './screens/HomeScreen';
+import {QueryClientProvider, QueryClient} from 'react-query';
+
+const client = new QueryClient();
 
 const App = () => {
-  return <HomeScreen />;
+  return (
+    <QueryClientProvider client={client}>
+      <HomeScreen />
+    </QueryClientProvider>
+  );
 };
 
 export default App;

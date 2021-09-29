@@ -9,13 +9,16 @@
 import React from 'react';
 import HomeScreen from './screens/HomeScreen';
 import {QueryClientProvider, QueryClient} from 'react-query';
+import {SafeAreaView} from 'react-native';
 
 const client = new QueryClient();
 
 const App = () => {
   return (
     <QueryClientProvider client={client}>
-      <HomeScreen />
+      <SafeAreaView style={{backgroundColor: 'transparent', flex: 1}}>
+        <HomeScreen />
+      </SafeAreaView>
     </QueryClientProvider>
   );
 };

@@ -1,6 +1,6 @@
 import React from 'react';
 import {View, StyleSheet, Text, Image} from 'react-native';
-import Map from '../Map.web';
+import Map from '../Map';
 import {useQueryClient} from 'react-query';
 
 function getChunkId(lng: number, lat: number) {

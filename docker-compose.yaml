@@ -1,4 +1,4 @@
-version: "3.1"
+version: "3.7"
 
 services:
   mongo:
@@ -6,8 +6,19 @@ services:
     restart: always
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
-      MONGO_INITDB_ROOT_PASSWORD: example
+      MONGO_INITDB_ROOT_PASSWORD: root
+      MONGO_INITDB_DATABASE: pugster
+    ports:
+      - "27017:27017"
+
   app:
     build:
       dockerfile: Dockerfile
       context: ./
+    ports:
+      - "8080:8080"
+    environment:
+      MONGODB_URL: mongodb://pugster:pugster@mongo:27017/pugster
+
+
+

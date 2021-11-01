@@ -1,10 +1,8 @@
 import { MongoClient } from "mongodb";
 
-let url = "mongodb://localhost:27017";
+const url = process.env.MONGODB_URL || "mongodb://localhost:27017";
 
-if (process.env.NODE_ENV === "production") {
-  url = "mongodb://pugster:pugster@mongodb.database.svc.cluster.local:27017/pugster"
-}
+// "mongodb://pugster:pugster@mongodb.database.svc.cluster.local:27017/pugster"
 
 let client: MongoClient | null = null;
 

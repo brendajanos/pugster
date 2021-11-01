@@ -1,6 +1,9 @@
 FROM node:14 as builder
 WORKDIR /usr/src
-COPY packages/backend ./
+COPY package.json ./
+COPY tsconfig.json ./
+COPY yarn.lock ./
+COPY src ./src
 RUN yarn && yarn add typescript -g
 RUN yarn build
 
